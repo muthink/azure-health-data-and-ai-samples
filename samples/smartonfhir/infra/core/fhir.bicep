@@ -36,6 +36,20 @@ resource fhir 'Microsoft.HealthcareApis/workspaces/fhirservices@2021-06-01-previ
       authority: authority
       audience: resolvedAudience
       smartProxyEnabled: false
+      smartIdentityProviders: [
+        {
+            authority: 'https://fhirb2ctenantdemo.b2clogin.com/fhirb2ctenantdemo.onmicrosoft.com/B2C_1_USER_FLOW_SIGN_IN_1/v2.0'
+            applications: [
+                {
+                    clientId: 'a198006d-ced2-447d-a25c-b21f3162f201'
+                    audience: 'a198006d-ced2-447d-a25c-b21f3162f201'
+                    allowedDataActions: [
+                        'Read'
+                    ]
+                }
+            ]
+        }
+      ]
     }
   }
 

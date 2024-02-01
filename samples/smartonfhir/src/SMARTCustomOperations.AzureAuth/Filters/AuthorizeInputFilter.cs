@@ -77,8 +77,10 @@ namespace SMARTCustomOperations.AzureAuth.Filters
             }
 
             // Build the aad authorize url
-            var authUrl = "https://login.microsoftonline.com";
-            var authPath = $"{_configuration.TenantId}/oauth2/v2.0/authorize";
+            //var authUrl = "https://login.microsoftonline.com";
+            var authUrl = "https://fhirb2ctenantdemo.b2clogin.com/fhirb2ctenantdemo.onmicrosoft.com/B2C_1_signupsignin1";
+            //var authPath = $"{_configuration.TenantId}/oauth2/v2.0/authorize";
+            var authPath = $"oauth2/v2.0/authorize";
             var redirectUrl = $"{authUrl}/{authPath}";
             var redirect_querystring = launchContext.ToRedirectQueryString();
             var newRedirectUrl = $"{redirectUrl}?{redirect_querystring}";

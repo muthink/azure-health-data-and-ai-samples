@@ -12,9 +12,11 @@ import { LogLevel } from "@azure/msal-browser";
  */
 export const msalConfig = {
     auth: {
-        clientId: window.ENV_CONFIG.REACT_APP_AAD_APP_CLIENT_ID, 
-        authority: `https://login.microsoftonline.com/${window.ENV_CONFIG.REACT_APP_AAD_APP_TENANT_ID}`,
+        clientId: window.ENV_CONFIG.REACT_APP_AAD_APP_CLIENT_ID,
+        authority: 'https://fhirb2ctenantdemo.b2clogin.com/fhirb2ctenantdemo.onmicrosoft.com/B2C_1_signupsignin1', 
+        // authority: `https://login.microsoftonline.com/${window.ENV_CONFIG.REACT_APP_AAD_APP_TENANT_ID}`,
         redirectUri: window.location.protocol + "//" + window.location.host + window.location.pathname,
+        knownAuthorities: ['fhirb2ctenantdemo.b2clogin.com'],
         postLogoutRedirectUri: "https://www.microsoft.com",
     },
     cache: {

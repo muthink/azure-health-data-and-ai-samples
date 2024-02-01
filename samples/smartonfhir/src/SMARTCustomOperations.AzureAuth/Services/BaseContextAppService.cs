@@ -33,11 +33,22 @@ namespace SMARTCustomOperations.AzureAuth.Services
         // https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions/blob/master/Function/BootLoader.cs
         public async Task<ClaimsPrincipal> ValidateContextAccessTokenAsync(string accessToken)
         {
-            var authority = $"https://login.microsoftonline.com/{_tenantId}/v2.0";
+            //var authority = $"https://login.microsoftonline.com/{_tenantId}/v2.0";
+            var authority = $"https://fhirb2ctenantdemo.b2clogin.com/fhirb2ctenantdemo.onmicrosoft.com/B2C_1_signupsignin1/v2.0";
+
+            //var validIssuers = new List<string>()
+            //{
+            //    $"https://login.microsoftonline.com/{_tenantId}/",
+            //    $"https://login.microsoftonline.com/{_tenantId}/v2.0",
+            //    $"https://login.windows.net/{_tenantId}/",
+            //    $"https://login.microsoft.com/{_tenantId}/",
+            //    $"https://sts.windows.net/{_tenantId}/",
+            //};
+
             var validIssuers = new List<string>()
             {
-                $"https://login.microsoftonline.com/{_tenantId}/",
-                $"https://login.microsoftonline.com/{_tenantId}/v2.0",
+                $"https://fhirb2ctenantdemo.b2clogin.com/{_tenantId}/",
+                $"https://fhirb2ctenantdemo.b2clogin.com/{_tenantId}/v2.0/",
                 $"https://login.windows.net/{_tenantId}/",
                 $"https://login.microsoft.com/{_tenantId}/",
                 $"https://sts.windows.net/{_tenantId}/",
