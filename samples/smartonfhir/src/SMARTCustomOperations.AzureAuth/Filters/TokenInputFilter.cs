@@ -74,8 +74,10 @@ namespace SMARTCustomOperations.AzureAuth.Filters
             }
 
             // Setup new http client for token request
-            string tokenEndpoint = "https://login.microsoftonline.com/";
-            string tokenPath = $"{_configuration.TenantId}/oauth2/v2.0/token";
+            // string tokenEndpoint = "https://login.microsoftonline.com/";
+            string tokenEndpoint = "https://fhirb2ctenantdemo.b2clogin.com/";
+            // string tokenPath = $"{_configuration.TenantId}/oauth2/v2.0/token";
+            string tokenPath = "fhirb2ctenantdemo.onmicrosoft.com/B2C_1_signupsignin1/oauth2/v2.0/token";
             context.UpdateRequestUri(context.Request.Method, tokenEndpoint, tokenPath);
             context.Request.Content = tokenContext.ToFormUrlEncodedContent();
             
