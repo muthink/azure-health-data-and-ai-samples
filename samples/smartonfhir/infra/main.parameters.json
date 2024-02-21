@@ -17,14 +17,20 @@
     "StandaloneAppClientId": {
       "value": "${StandaloneAppClientId}"
     },
-    "FhirResourceAppId ": {
+    "FhirResourceAppId": {
       "value": "${FhirResourceAppId}"
     },
     "existingresourcegroupname": {
       "value": ""
     },
-    "smartonfhirwithb2c": {
+    "smartOnFhirWithB2C": {
       "value": ""
+    },
+    "fhirid": {
+      "value": ""
+    },
+    "B2CTenantId": {
+      "value": "${B2CTenantId}"
     },
     "FhirAudience": {
       "value": "${FhirAudience}"

@@ -4,7 +4,6 @@ param workspaceName string
 param fhirServiceName string
 param tenantId string
 param location string
-param audience string = ''
 param appTags object = {}
 param B2cAuthorityURL string
 param StandaloneAppClientId string
@@ -59,7 +58,26 @@ resource fhir 'Microsoft.HealthcareApis/workspaces/fhirservices@2023-12-01' = if
 }
 
 resource fhirExisting 'Microsoft.HealthcareApis/workspaces/fhirservices@2021-06-01-preview' existing = if (!createFhirService) {
-  name: '${newOrExistingWorkspaceName}/${fhirServiceName}'
+    name: '${newOrExistingWorkspaceName}/${fhirServiceName}'
+    identity: {
+        type: 'SystemAssigned'
+    }
+    properties: {
+    authenticationConfiguration: {
+      smartIdentityProviders: [
+          {
+              authority: B2cAuthorityURL
+              applications: [
+                  {
+                      clientId: StandaloneAppClientId
+                      audience: FhirResourceAppId
+                      allowedDataActions: ['Read']
+                  }
+              ]
+          }
+      ]
+    }
+  }
 }
 
 output fhirId string = createFhirService ? fhir.id : fhirExisting.id
